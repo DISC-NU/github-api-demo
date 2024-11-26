@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: github-receipt-backend
+    env: node
+    buildCommand: cd server && npm install && npm run build
+    startCommand: cd server && npm start
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: GITHUB_TOKEN
+        sync: false
+    healthCheckPath: /api/health
+
+  - type: static
+    name: github-receipt-frontend
+    buildCommand: cd client && npm install && npm run build
+    staticPublishPath: client/dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://github-receipt-backend.onrender.com
