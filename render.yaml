@@ -10,11 +10,3 @@ services:
       - key: GITHUB_TOKEN
         sync: false
     healthCheckPath: /api/health
-
-  - type: static
-    name: github-receipt-frontend
-    buildCommand: cd client && npm install && npm run build
-    staticPublishPath: client/dist
-    envVars:
-      - key: VITE_API_URL
-        value: https://github-receipt-backend.onrender.com
