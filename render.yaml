@@ -2,8 +2,12 @@ services:
   - type: web
     name: github-receipt-backend
     env: node
-    buildCommand: cd server && npm install && npm run build
-    startCommand: cd server && npm start
+    buildCommand: |
+      cd server && 
+      npm install && 
+      npm run build &&
+      ls -la dist
+    startCommand: cd server && node dist/server.js
     envVars:
       - key: PORT
         value: 10000
