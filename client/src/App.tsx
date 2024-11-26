@@ -16,7 +16,7 @@ export default function App() {
       setLoading(true);
       setError("");
       const response = await axios.get<GitHubStats>(
-        `${import.meta.env.VITE_API_URL}/github/${username}`
+        `${import.meta.env.VITE_API_URL}/api/github/${username}`
       );
       setStats(response.data);
     } catch (err) {
